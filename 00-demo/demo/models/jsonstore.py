@@ -19,14 +19,16 @@ class JsonStore(DataStore):
             os.makedirs(os.path.dirname(fname))
         if not os.path.isfile(fname):
             with open(fname, 'w') as f:
-                json.dump(dict(), f)
+                json.dump(list(self.users), f)
+        else:
+            self.load()
 
     def load(self) -> None:
         """
         Load all users from the store again.
         """
         with open(self.fname, 'r') as f:
-            self.users = json.load(f)
+            self.users = set([User.load(o) for o in json.load(f)])
     
     def store(self, user: User) -> None:
         """
@@ -35,7 +37,7 @@ class JsonStore(DataStore):
         """
         self.users.add(user)
         with open(self.fname, 'w') as f:
-            json.dump(self.user, f)
+            json.dump([u.dump() for u in self.users], f)
     
     def get(self, name: str) -> Optional[User]:
         """

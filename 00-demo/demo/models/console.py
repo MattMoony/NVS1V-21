@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from typing import *
+import colorama as cr
+from demo.models.user import User
 from demo.models.datastore import DataStore
 
 class Console(object):
@@ -15,6 +17,7 @@ class Console(object):
         self.cmds: Dict[str, Callable[..., None]] = cmds
         self.store: DataStore = store
         self.prompt: str = prompt
+        self.user: Optional[User] = None
     
     def run(self) -> None:
         """
@@ -22,7 +25,7 @@ class Console(object):
         """
         try:
             while True:
-                cmd: str = input(self.prompt)
+                cmd: str = input(f'{cr.Fore.LIGHTBLUE_EX}{self.user.name if self.user else ""}{self.prompt}{cr.Fore.RESET}')
                 args: List[str] = cmd.split()
                 tmp: Union[Callable[..., None], Dict[str, Callable[..., None]]] = self.cmds
                 i: int = 0
