@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Open+Sans&display=swap');
+
+html, body {
+    padding: 0;
+    margin: 0;
+    background-color: #ff5d00;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    font-family: 'Open Sans', sans-serif;
+    color: #fff;
+}
+
+.statusbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    opacity: .7;
+    user-select: none;
+}
+
+.statusbar .logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Nunito', sans-serif;
+}
+
+.statusbar .logo i {
+    margin-right: .4em;
+}
+
+.notes {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.notes .note {
+    width: 60%;
+    max-width: 40em;
+    min-width: 20em;
+    margin: .5em auto;
+    background-color: #fff;
+    color: #000;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 1em;
+    transition: .2s ease;
+}
+
+.notes .note:not(.editable):hover {
+    transform: scale(1.03);
+}
+
+.notes .note h1 {
+    margin: 0;
+    color: #ff5d00;
+    font-family: 'Nunito', sans-serif;
+}
+
+.notes .note .body {
+    color: #696969;
+}
+
+.notes .note h1:focus, .notes .note .body:focus {
+    outline: none;
+}
+
+.notes .note div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: .5em;
+}
+
+.notes .note:not(.editable) div:last-child {
+    display: none;
+}
+
+.notes .note div:last-child .fa-trash-alt {
+    color: #ff5d00;
+    font-size: 1.4em;
+    margin-right: .8em;
+    transition: .2s ease;
+}
+
+.notes .note div:last-child button {
+    width: 8em;
+    min-height: 2em;
+    box-sizing: border-box;
+    padding: .4em .8em;
+    font-size: 1em;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    background-color: #fff;
+    border: 2px solid #ff5d00;
+    color: #ff5d00;
+    border-radius: 4px;
+    transition: .2s ease;
+}
+
+.notes .note div:last-child button:hover,
+.notes .note div:last-child .fa-trash-alt:hover {
+    cursor: pointer;
+    transform: rotate(-3deg);
+}
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.toolbar button {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 15em;
+    min-height: 2.8em;
+    box-sizing: border-box;
+    padding: .4em .8em;
+    background: linear-gradient(to right, #ff5d00, #ff5d00 50%, #fff 50%, #fff 100%);;
+    background-size: 200% 100%;
+    background-position: 0 0;
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    font-size: 1.2em;
+    font-weight: bold;
+    font-family: 'Nunito', sans-serif;
+    transition: .2s ease;
+}
+
+.toolbar button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    background-position: 100% 0;
+    color: #ff5d00;
+}
+
+.toolbar button i {
+    margin-right: .4em;
+}
